@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Avanti-Products{% endblock title %}
+
+{% block content %}
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">{% trans "Products" %}</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+            <li class="current">{% trans "Products" %}</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+      <div class="container">
+        
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>{% trans "Our Products" %}</h2>
+          <p>{% trans "Explore our Product range as your trusted sourcing partner, where quality and reliability meet to streamline your supply chain needs." %}</p>
+        </div><!-- End Section Title -->
+        
+        <!-- Debug Info -->
+        <div class="alert alert-info" style="margin: 20px 0;">
+          <p><strong>Debug Info:</strong></p>
+          <p>Main Categories: {{ main_categories|length }}</p>
+          <p>All Categories: {{ categories|length }}</p>
+          <p>Products: {{ products|length }}</p>
+        </div>
+        
+        <!-- Category Filter -->
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">{% trans "All" %}</li>
+            {% for category in main_categories %}
+              <li data-filter=".filter-{{ category.id }}">{{ category.content.name }}</li>
+              {% for subcategory in category.subcategories_with_content %}
+                <li data-filter=".filter-{{ subcategory.id }}" style="margin-left: 20px; font-size: 0.9em; color: #666;">
+                  ↳ {{ subcategory.content.name }}
+                </li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+
+          <!-- Products Grid -->
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            {% for product in products %}
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ product.category.id }}">
+                <div class="portfolio-content h-100">
+                  {% if product.image %}
+                    <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.content.name }}">
+                  {% else %}
+                    <img src="{% static 'products1.jpeg' %}" class="img-fluid" alt="{{ product.content.name }}">
+                  {% endif %}
+                  <div class="portfolio-info">
+                    <h4>{{ product.content.name }}</h4>
+                    <p>
+                      {% if product.category.parent %}
+                        {{ product.category.parent.productcategory_content.first.name }} > 
+                      {% endif %}
+                      {{ product.category.content.name }}
+                    </p>
+                    {% if product.image %}
+                      <a href="{{ product.image.url }}" title="{{ product.content.name }}" data-gallery="portfolio-gallery-{{ product.category.id }}" class="glightbox preview-link">
+                        <i class="bi bi-zoom-in"></i>
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% empty %}
+              <div class="col-12">
+                <div class="alert alert-warning text-center">
+                  <p>{% trans "No products found. Please add some products in the admin panel." %}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section><!-- /Portfolio Section -->
+
+  </main>
+{% endblock content %}

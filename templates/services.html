@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Avanti - Services" %}{% endblock title %}
+
+{% block content %}
+<main class="main">
+  <!-- Page Title -->
+  <div class="page-title accent-background">
+    <div class="container d-lg-flex justify-content-between align-items-center">
+      <h1 class="mb-2 mb-lg-0">{% trans "Services" %}</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+          <li class="current">{% trans "Services" %}</li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
+
+  <!-- Features Section -->
+  <section id="features" class="features section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>{% trans "Services" %}</h2>
+      <p>{% trans "Our combined sourcing and consultancy services offer a holistic approach to meet the diverse needs of our clients." %}</p>
+    </div><!-- End Section Title -->
+  </section><!-- /Features Section -->
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Image Column -->
+        <div class="col-lg-6 about-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{% static 'salad.jpeg' %}" class="img-fluid rounded" alt="{% trans 'Sourcing Solutions' %}">
+        </div>
+        <!-- Text Column -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="container" data-aos="fade-up">
+            <h2>{% trans "What We Do" %}</h2>
+            <p>{% trans "Our combined sourcing and consultancy services offer a holistic approach to meet the diverse needs of our clients." %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Text Column -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="container" data-aos="fade-up">
+            <h2>{% trans "Consultancy Services" %}</h2>
+            <p>{% trans "We help you think beyond the tray — optimizing every aspect of your inflight catering strategy" %}</p>
+          </div>
+        </div>
+        <!-- Image Column -->
+        <div class="col-lg-6 about-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{% static 'main2.jpg' %}" class="img-fluid rounded" alt="{% trans 'Consultancy Services' %}">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+{% endblock content %}
