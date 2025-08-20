@@ -1,8 +1,48 @@
-venv/
+# Django
+*.log
+*.pot
 *.pyc
 __pycache__/
+local_settings.py
 *.sqlite3
+media/
+staticfiles/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Environment variables
 .env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# GeoIP Database
 /geoip/GeoLite2-City.mmdb
+
+# Django static files in production
+/static/
 /staticfiles/
 /media/
+
+# Uploads
+uploads/
+
+# Logs
+logs/
+*.log
+
+# Database backups
+*.sql
+*.dump
