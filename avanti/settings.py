@@ -162,7 +162,7 @@ EMAIL_HOST = 'smtp.gmail.com'  # e.g., smtp.gmail.com
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'shipstore.app@gmail.com'  # Your Gmail address
-EMAIL_HOST_PASSWORD = 'xaem oyjr sgtk tmkp'  # Use App Password if 2FA is enabled
+EMAIL_HOST_PASSWORD = 'cfbc lfwk ztck vlmj'  # Use App Password if 2FA is enabled
 DEFAULT_FROM_EMAIL = 'shipstore.app@gmail.com'  # Your Gmail address
 
 CONTACT_EMAIL = 'shipstore.app@gmail.com'  # Where to send contact form emails
